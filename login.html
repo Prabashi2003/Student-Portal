@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html"><img src="images/logo.png"></a>
+        <div class="nav-links">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="login.html?form=login">LOGIN</a></li>
+                <li><a href="login.html?form=register">REGISTER</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="center-wrapper">
+        <div class="wrapper">
+            <span class="bg-animate"></span>
+            <span class="bg-animate2"></span>
+
+            <div class="form-box login">
+                <h2 class="animation" style="--i:0; --j:21;">Login</h2>
+                <form action="login.php" method="post">
+
+                    <div class="input-box animation" style="--i:1; --j:22;">
+                        <input type="text" name="username" required>
+                        <label>Username</label>
+                        <i class='bx bx-user'></i>
+                    </div>
+
+                    <div class="input-box animation" style="--i:2; --j:23;">
+                        <input type="password" name="password" required>
+                        <label>Password</label>
+                    </div>
+
+                    <div class="remember-forgot animation" style="--i:3; --j:24;">
+                        <label class="remember-me">
+                            <input type="checkbox" name="remember" value="1">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="btn animation" style="--i:4; --j:25">Login</button>
+                    <div class="register-link animation" style="--i:5; --j:26;">
+                        <p>Not a member? <a href="#" class="reg-Link animation">Sign Up</a></p>
+                    </div>
+
+                </form>
+            </div>
+            <div class="info-text login">
+                <h2 class="animation" style="--i:0; --j:20;">Welcome Back!</h2>
+                <p class="animation" style="--i:1; --j:21;">Login to access your student portal and manage your details.
+                </p>
+            </div>
+
+            <div class="form-box register">
+                <h2 class="animation" style="--i:17; --j:0;">Sign Up</h2>
+                <form action="register.php" method="post">
+
+                    <div class="input-box animation" style="--i:18; --j:1;">
+                        <input type="text" name="username" required>
+                        <label>Username</label>
+                        <i class='bx bx-user'></i>
+                    </div>
+
+                    <div class="input-box animation" style="--i:19; --j:2;">
+                        <input type="text" name="email" required>
+                        <label>Email</label>
+                        <i class='bx bxs-envelope'></i>
+                    </div>
+
+                    <div class="input-box animation" style="--i:20; --j:3;">
+                        <input type="password" name="password" required>
+                        <label>Password</label>
+                    </div>
+
+                    <button type="submit" class="btn animation" style="--i:21; --j:4">SIGN UP</button>
+                    <div class="register-link animation" style="--i:22; --j:5;">
+                        <p>Already have an account? <a href="#" class="Log-Link">Login</a></p>
+                    </div>
+
+                </form>
+            </div>
+            <div class="info-text register">
+                <h2 class="animation" style="--i:17; --j:0;">Student Portal!</h2>
+                <p class="animation" style="--i:18; --j:1;">If you don't have an account, please register.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const error = urlParams.get('error');
+        const success = urlParams.get('success');
+        const userExists = urlParams.get('userExists');
+        const emailExists = urlParams.get('emailExists');
+        const formType = urlParams.get('form');
+
+        if (formType === 'register') {
+            document.querySelector('.wrapper').classList.add('active');
+        } else if (formType === 'login') {
+            document.querySelector('.wrapper').classList.remove('active');
+        }
+
+        if (success === '1') {
+            alert("🎉 Registration successful! Check your mail box! You can now log in.");
+        }
+
+        if (error) {
+            if (error === '1') {
+                alert("❌ Invalid username or password.");
+            } else {
+                alert("⚠️ " + decodeURIComponent(error.replace(/\+/g, ' ')));
+            }
+        }
+
+        if (userExists === '1') {
+            alert("⚠️ Username already exists. Please choose a different one.");
+        }
+
+        if (emailExists === '1') {
+            alert("⚠️ Email already exists. Please use a different one.");
+        }
+    </script>
+
+
+</body>
+
+</html>

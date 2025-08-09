@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+nav {
+    background: linear-gradient(135deg, #303345 0%, #25224e 100%);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgb(0, 0, 0);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+nav img {
+    height: 40px;
+    width: auto;
+}
+
+.nav-links ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.0rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-links a.active {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mode-toggle-btn {
+    margin-left: 10px;
+}
+
+.light-mode .mode-toggle-btn {
+    color: #333 !important;
+}
+
+.nav-links ul li:last-child {
+    margin-left: auto; 
+}
+
+.light-mode {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+.light-mode .mode-toggle-btn {
+    color: #333 !important;
+}

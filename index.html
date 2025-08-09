@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="nav.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="images/logo.png"></a>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="login.html?form=login">LOGIN</a></li>
+                    <li><a href="login.html?form=register">REGISTER</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="text-box">
+            <h1>Welcome to Student Portal</h1>
+            <p>Your central hub to view your profile, manage student details, and contact us. <br> Log in or register to
+                begin.</p>
+            <a href="login.html?form=login" class="hero-btn">Login</a>
+            <a href="login.html?form=register" class="hero-btn">Register</a>
+        </div>
+    </section>
+
+    <script>
+        function setupModeToggle() {
+            const navbar = document.querySelector('nav');
+            const navLinks = document.querySelector('.nav-links ul');
+
+            if (!navbar || !navLinks) {
+                console.warn('Navigation bar not found. Creating fallback button.');
+                const btn = document.createElement('button');
+                btn.textContent = 'Toggle Light/Dark Mode';
+                btn.style.position = 'fixed';
+                btn.style.bottom = '20px';
+                btn.style.right = '20px';
+                btn.style.padding = '10px 20px';
+                btn.style.border = 'none';
+                btn.style.borderRadius = '5px';
+                btn.style.cursor = 'pointer';
+                btn.style.backgroundColor = '#0ef';
+                btn.style.color = '#081b29';
+                btn.style.fontWeight = 'bold';
+                document.body.appendChild(btn);
+
+                btn.addEventListener('click', () => {
+                    document.body.classList.toggle('light-mode');
+                });
+                return;
+            }
+
+            const toggleLi = document.createElement('li');
+            const toggleBtn = document.createElement('button');
+
+            toggleBtn.innerHTML = '<i class="bx bx-sun"></i>';
+            toggleBtn.className = 'mode-toggle-btn';
+            toggleBtn.setAttribute('aria-label', 'Toggle light/dark mode');
+
+            toggleBtn.style.background = 'transparent';
+            toggleBtn.style.border = 'none';
+            toggleBtn.style.color = '#0ef';
+            toggleBtn.style.fontSize = '1.5rem';
+            toggleBtn.style.cursor = 'pointer';
+            toggleBtn.style.padding = '8px 12px';
+            toggleBtn.style.borderRadius = '50%';
+            toggleBtn.style.transition = 'all 0.3s ease';
+            toggleBtn.style.display = 'flex';
+            toggleBtn.style.alignItems = 'center';
+            toggleBtn.style.justifyContent = 'center';
+
+            toggleBtn.addEventListener('mouseenter', () => {
+                toggleBtn.style.backgroundColor = 'rgba(14, 239, 255, 0.1)';
+                toggleBtn.style.transform = 'scale(1.1)';
+            });
+
+            toggleBtn.addEventListener('mouseleave', () => {
+                toggleBtn.style.backgroundColor = 'transparent';
+                toggleBtn.style.transform = 'scale(1)';
+            });
+
+            toggleLi.appendChild(toggleBtn);
+            navLinks.appendChild(toggleLi);
+
+            toggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('light-mode');
+
+                if (document.body.classList.contains('light-mode')) {
+                    toggleBtn.innerHTML = '<i class="bx bx-moon"></i>'; 
+                } else {
+                    toggleBtn.innerHTML = '<i class="bx bx-sun"></i>'; 
+                }
+            });
+        }
+
+
+        document.addEventListener('DOMContentLoaded', setupModeToggle);
+    </script>
+
+</body>
+
+</html>
